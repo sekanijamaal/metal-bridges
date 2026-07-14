@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="METAL BRIDGES — Watch our project videos showcasing metal fabrication and welding work in Accra, Ghana.">
+    <title>Video Gallery — METAL BRIDGES | Project Videos</title>
+    <script>
+        (function() {
+            var t = localStorage.getItem('theme');
+            if (t === 'light' || t === 'dark') {
+                document.documentElement.setAttribute('data-theme', t);
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 24px;
+        }
+        .video-card {
+            background: var(--color-dark-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .video-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 168, 67, 0.3);
+            box-shadow: var(--shadow-glow);
+        }
+        .video-thumbnail {
+            position: relative;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, var(--color-dark-surface), var(--color-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .video-thumbnail img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.05);
+        }
+        .video-thumbnail svg {
+            opacity: 0.3;
+            position: relative;
+            z-index: 2;
+        }
+        .play-button {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background: rgba(212, 168, 67, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-dark);
+            transition: var(--transition);
+            box-shadow: 0 4px 30px rgba(212, 168, 67, 0.3);
+        }
+        .play-button svg {
+            opacity: 1;
+            margin-left: 4px;
+        }
+        .video-card:hover .play-button {
+            transform: scale(1.1);
+            background: var(--color-primary);
+        }
+        .video-info {
+            padding: 20px;
+        }
+        .video-info h3 {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 8px;
+        }
+        .video-info p {
+            font-size: 0.88rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+        .video-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            background: rgba(212, 168, 67, 0.1);
+            padding: 3px 10px;
+            border-radius: var(--radius-xl);
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 80px 24px;
+            grid-column: 1 / -1;
+        }
+        .empty-state svg {
+            opacity: 0.3;
+            margin-bottom: 20px;
+        }
+        .empty-state h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--color-white);
+            margin-bottom: 12px;
+        }
+        .empty-state p {
+            color: var(--color-text-muted);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        @media (max-width: 480px) {
+            .video-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header id="navbar" class="navbar scrolled">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">&#9646;</span>
+                <div class="logo-text">
+                    <span class="logo-main">METAL BRIDGES</span>
+                    <span class="logo-sub">Precision Fabrication</span>
+                </div>
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#about" class="nav-link">About Us</a>
+                <a href="index.html#services" class="nav-link">Services</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="video-gallery.html" class="nav-link active">Video Gallery</a>
+                <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="index.html#quote" class="nav-btn-quote">Request a Quote</a>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            </button>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="hero" style="min-height: 50vh;">
+        <div class="hero-bg-overlay"></div>
+        <div class="hero-steel-pattern"></div>
+        <div class="hero-content" style="padding-top: 120px;">
+            <span class="section-tag">Watch Our Work</span>
+            <h1 class="hero-title" style="font-size: clamp(2rem, 5vw, 3.5rem); opacity: 1;">
+                Video <span class="hero-highlight">Gallery</span>
+            </h1>
+            <p class="hero-subtitle" style="opacity: 1;">Watch our fabrication process and completed projects in action. See the precision and craftsmanship behind every piece.</p>
+        </div>
+    </section>
+
+    <!-- Video Gallery Section -->
+    <section class="section" style="background: var(--color-dark);">
+        <div class="container">
+            <div class="video-grid" id="videoGrid">
+
+                <!-- Placeholder Video Cards -->
+                <div class="video-card reveal">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=640&h=360&fit=crop&auto=format&q=80" alt="Gate Fabrication Process" loading="lazy">
+                        <div class="play-button">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Gate Fabrication Process</h3>
+                        <p>Watch our team craft a modern sliding gate from raw steel to finished product.</p>
+                        <span class="video-tag">MP4 Video</span>
+                    </div>
+                </div>
+
+                <div class="video-card reveal">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?w=640&h=360&fit=crop&auto=format&q=80" alt="Staircase Installation" loading="lazy">
+                        <div class="play-button">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Staircase Installation</h3>
+                        <p>See the precision engineering behind our custom spiral staircase installation.</p>
+                        <span class="video-tag">YouTube</span>
+                    </div>
+                </div>
+
+                <div class="video-card reveal">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1567361808960-dec9cb578182?w=640&h=360&fit=crop&auto=format&q=80" alt="Workshop Tour" loading="lazy">
+                        <div class="play-button">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Workshop Tour</h3>
+                        <p>A guided tour of our state-of-the-art metal fabrication workshop in Tantra Hill.</p>
+                        <span class="video-tag">MP4 Video</span>
+                    </div>
+                </div>
+
+                <div class="video-card reveal">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=640&h=360&fit=crop&auto=format&q=80" alt="Security Door Showcase" loading="lazy">
+                        <div class="play-button">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Security Door Showcase</h3>
+                        <p>Featuring our premium security door collection with modern design elements.</p>
+                        <span class="video-tag">Facebook</span>
+                    </div>
+                </div>
+
+                <div class="video-card reveal">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1535813547-9b5c4c3f3470?w=640&h=360&fit=crop&auto=format&q=80" alt="Industrial Roofing Project" loading="lazy">
+                        <div class="play-button">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Industrial Roofing Project</h3>
+                        <p>Time-lapse of a large-scale industrial roofing structure installation.</p>
+                        <span class="video-tag">YouTube</span>
+                    </div>
+                </div>
+
+                <div class="video-card reveal">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=640&h=360&fit=crop&auto=format&q=80" alt="Client Testimonial Video" loading="lazy">
+                        <div class="play-button">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Client Testimonial Video</h3>
+                        <p>Hear from our satisfied clients about their experience with METAL BRIDGES.</p>
+                        <span class="video-tag">MP4 Video</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Upload Info -->
+            <div style="text-align: center; margin-top: 60px; padding: 40px; background: var(--color-dark-card); border: 1px solid var(--color-border); border-radius: var(--radius-lg);">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-primary); opacity: 0.6; margin-bottom: 16px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--color-white); margin-bottom: 8px;">More Videos Coming Soon</h3>
+                <p style="color: var(--color-text-muted); max-width: 500px; margin: 0 auto;">New project videos will be added soon. We regularly upload footage of our fabrication process, completed projects, and client testimonials.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2026 METAL BRIDGES. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
