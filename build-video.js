@@ -32,18 +32,20 @@ const nav = `
     </div>
 </header>`;
 
+const thumb = 'images/videos/video-thumb.svg';
+
 const videos = [
-  { img: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=640&h=360&fit=crop&auto=format&q=80', title: 'Gate Fabrication Process', desc: 'Watch our team craft a modern sliding gate from raw steel to finished product.', tag: 'MP4 Video' },
-  { img: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?w=640&h=360&fit=crop&auto=format&q=80', title: 'Staircase Installation', desc: 'See the precision engineering behind our custom spiral staircase installation.', tag: 'YouTube' },
-  { img: 'https://images.unsplash.com/photo-1567361808960-dec9cb578182?w=640&h=360&fit=crop&auto=format&q=80', title: 'Workshop Tour', desc: 'A guided tour of our state-of-the-art metal fabrication workshop in Tantra Hill.', tag: 'MP4 Video' },
-  { img: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=640&h=360&fit=crop&auto=format&q=80', title: 'Security Door Showcase', desc: 'Featuring our premium security door collection with modern design elements.', tag: 'Facebook' },
-  { img: 'https://images.unsplash.com/photo-1535813547-9b5c4c3f3470?w=640&h=360&fit=crop&auto=format&q=80', title: 'Industrial Roofing Project', desc: 'Time-lapse of a large-scale industrial roofing structure installation.', tag: 'YouTube' },
-  { img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=640&h=360&fit=crop&auto=format&q=80', title: 'Client Testimonial Video', desc: 'Hear from our satisfied clients about their experience with METAL BRIDGES.', tag: 'MP4 Video' },
+  { img: thumb, url: 'https://res.cloudinary.com/dmvmc4f1/video/upload/f_mp4/v1785415402/82ce7f9f-f961-4f34-bf03-e15c9d3582ff_vewduv.mov', title: 'Gate Fabrication Process', desc: 'Watch our team craft a modern sliding gate from raw steel to finished product.', tag: 'MP4 Video' },
+  { img: thumb, url: 'https://res.cloudinary.com/dmvmc4f1/video/upload/f_mp4/v1785415404/5e398746-23e5-4f0c-bbcd-d386e3ea6569_l6qtkv.mov', title: 'Staircase Installation', desc: 'See the precision engineering behind our custom spiral staircase installation.', tag: 'MP4 Video' },
+  { img: thumb, url: 'https://res.cloudinary.com/dmvmc4f1/video/upload/v1785415421/ced4f97d-ff4c-4da2-916b-04502787101b_eivz0g.mp4', title: 'Workshop Tour', desc: 'A guided tour of our state-of-the-art metal fabrication workshop in Tantra Hill.', tag: 'MP4 Video' },
+  { img: thumb, url: 'https://res.cloudinary.com/dmvmc4f1/video/upload/v1785415425/6e8ccc0c-4d4a-4c02-bbb1-53f28e28d357_jrtd27.mp4', title: 'Security Door Showcase', desc: 'Featuring our premium security door collection with modern design elements.', tag: 'MP4 Video' },
+  { img: thumb, url: 'https://res.cloudinary.com/dmvmc4f1/video/upload/v1785415423/1465e137-087c-4007-8325-6e076f83a942_k8lkpd.mp4', title: 'Industrial Roofing Project', desc: 'Time-lapse of a large-scale industrial roofing structure installation.', tag: 'MP4 Video' },
+  { img: thumb, url: 'https://res.cloudinary.com/dmvmc4f1/video/upload/v1785415417/fb10164d-ab2a-49e2-9f9a-02b84ef9668e_sightj.mp4', title: 'Client Testimonial Video', desc: 'Hear from our satisfied clients about their experience with METAL BRIDGES.', tag: 'MP4 Video' },
 ];
 
 const vcards = videos.map(v => `
-                <div class="bg-dark-card border border-border rounded-md overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow">
-                    <div class="relative aspect-video bg-gradient-to-br from-dark-surface to-dark flex items-center justify-center cursor-pointer overflow-hidden">
+                <div class="video-card bg-dark-card border border-border rounded-md overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow cursor-pointer" data-video="${v.url}">
+                    <div class="relative aspect-video bg-gradient-to-br from-dark-surface to-dark flex items-center justify-center overflow-hidden">
                         <img src="${v.img}" alt="${v.title}" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[0.6s] group-hover:scale-105">
                         <div class="play-button absolute w-[70px] h-[70px] bg-[rgba(212,168,67,0.9)] rounded-full flex items-center justify-center text-dark shadow-[0_4px_30px_rgba(212,168,67,0.3)] transition-all duration-300 hover:scale-110 hover:bg-primary">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" class="ml-1"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>

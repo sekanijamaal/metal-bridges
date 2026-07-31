@@ -291,7 +291,7 @@ sections.push(`
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="gates">
-                <div class="overflow-hidden aspect-[4/3]"><img src="https://images.unsplash.com/photo-1621905251918-48018bf4b882?w=600&amp;h=450&amp;fit=crop&amp;auto=format&amp;q=80" alt="Modern Sliding Gate" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415688/df0c1b84-2f6a-4fa7-8d6f-058c23d6aed8_grzzqx.jpg" alt="Modern Sliding Gate" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
                 <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
                     <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Gates</span>
                     <h3 class="font-heading text-base font-bold text-white mb-1">Modern Sliding Gate</h3>
@@ -299,7 +299,7 @@ sections.push(`
                 </div>
             </div>
             <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="doors">
-                <div class="overflow-hidden aspect-[4/3]"><img src="https://images.unsplash.com/photo-1567361808960-dec9cb578182?w=600&amp;h=450&amp;fit=crop&amp;auto=format&amp;q=80" alt="Security Door" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415485/8c38782d-01cb-48e4-8391-96951b8b82ae_lwjwy1.jpg" alt="Heavy-Duty Security Door" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
                 <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
                     <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Doors</span>
                     <h3 class="font-heading text-base font-bold text-white mb-1">Heavy-Duty Security Door</h3>
@@ -307,7 +307,7 @@ sections.push(`
                 </div>
             </div>
             <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="staircases">
-                <div class="overflow-hidden aspect-[4/3]"><img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?w=600&amp;h=450&amp;fit=crop&amp;auto=format&amp;q=80" alt="Spiral Staircase" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415489/e8f93370-33b2-49b4-b760-e45e54606837_wijnxb.jpg" alt="Custom Spiral Staircase" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
                 <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
                     <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Staircases</span>
                     <h3 class="font-heading text-base font-bold text-white mb-1">Custom Spiral Staircase</h3>
@@ -315,7 +315,7 @@ sections.push(`
                 </div>
             </div>
             <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="roofing">
-                <div class="overflow-hidden aspect-[4/3]"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&amp;h=450&amp;fit=crop&amp;auto=format&amp;q=80" alt="Industrial Roofing" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415426/d91381e9-3cd6-4968-8ca1-39f61d063f9c_bv5p4u.jpg" alt="Industrial Roofing Structure" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
                 <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
                     <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Roofing</span>
                     <h3 class="font-heading text-base font-bold text-white mb-1">Industrial Roofing Structure</h3>
@@ -323,7 +323,7 @@ sections.push(`
                 </div>
             </div>
             <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="railings">
-                <div class="overflow-hidden aspect-[4/3]"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&amp;h=450&amp;fit=crop&amp;auto=format&amp;q=80" alt="Balcony Railings" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415690/032fa17c-6f98-4dd8-b203-890a4d3562da_lnmcvr.jpg" alt="Stainless Steel Balcony Railings" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
                 <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
                     <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Railings</span>
                     <h3 class="font-heading text-base font-bold text-white mb-1">Stainless Steel Balcony Railings</h3>
@@ -331,7 +331,7 @@ sections.push(`
                 </div>
             </div>
             <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="industrial">
-                <div class="overflow-hidden aspect-[4/3]"><img src="https://images.unsplash.com/photo-1535813547-9b5c4c3f3470?w=600&amp;h=450&amp;fit=crop&amp;auto=format&amp;q=80" alt="Steel Framework" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415425/6cf81117-81d5-4a5a-9993-e9ff950bee7f_nqhdap.jpg" alt="Commercial Steel Framework" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
                 <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
                     <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Industrial</span>
                     <h3 class="font-heading text-base font-bold text-white mb-1">Commercial Steel Framework</h3>
@@ -339,7 +339,7 @@ sections.push(`
                 </div>
             </div>
             <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="custom">
-                <div class="overflow-hidden aspect-[4/3]"><img src="https://images.unsplash.com/photo-1590650516494-0c8e4a4dd67e?w=600&amp;h=450&amp;fit=crop&amp;auto=format&amp;q=80" alt="Metal Partition" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415423/ce4402e6-c6c0-4ea6-b9e0-ddc21e08634a_dl0hta.jpg" alt="Decorative Metal Partition" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
                 <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
                     <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Custom</span>
                     <h3 class="font-heading text-base font-bold text-white mb-1">Decorative Metal Partition</h3>
@@ -347,7 +347,7 @@ sections.push(`
                 </div>
             </div>
             <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="gates">
-                <div class="overflow-hidden aspect-[4/3]"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&amp;h=450&amp;fit=crop&amp;auto=format&amp;q=80" alt="Swing Gate" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415689/ea2389ce-f1da-4f45-9771-2491786eff74_bq5hgb.jpg" alt="Ornamental Double Swing Gate" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
                 <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
                     <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Gates</span>
                     <h3 class="font-heading text-base font-bold text-white mb-1">Ornamental Double Swing Gate</h3>

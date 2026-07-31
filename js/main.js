@@ -591,4 +591,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /* ─── 19. VIDEO GALLERY LIGHTBOX ─── */
+    const videoCards = document.querySelectorAll('.video-card[data-video]');
+    if (videoCards.length) {
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = `
+            <button class="absolute top-6 right-6 w-11 h-11 flex items-center justify-center bg-dark-card border border-border-light rounded-full text-text-muted hover:text-primary hover:border-primary transition-all duration-300 cursor-pointer z-10" aria-label="Close video">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <div class="w-full max-w-[900px] px-4">
+                <video class="w-full rounded-lg bg-black" controls playsinline preload="metadata"></video>
+            </div>`;
+        document.body.appendChild(lightbox);
+        const video = lightbox.querySelector('video');
+        const closeBtn = lightbox.querySelector('button');
+
+        const openVideo = (src) => {
+            video.src = src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            video.play().catch(() => {});
+        };
+        const closeVideo = () => {
+            lightbox.classList.remove('active');
+            video.pause();
+            video.removeAttribute('src');
+            video.load();
+            document.body.style.overflow = '';
+        };
+        closeBtn.addEventListener('click', closeVideo);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeVideo();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeVideo();
+        });
+        videoCards.forEach(card => {
+            card.addEventListener('click', () => openVideo(card.getAttribute('data-video')));
+        });
+    }
+
 });

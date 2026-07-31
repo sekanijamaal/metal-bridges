@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+    <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#0a0a0f"/>
+            <stop offset="100%" stop-color="#1a1a2e"/>
+        </linearGradient>
+        <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#e8c468"/>
+            <stop offset="100%" stop-color="#b8912e"/>
+        </linearGradient>
+    </defs>
+    <rect width="640" height="360" fill="url(#bg)"/>
+    <path d="M0 0h640v1H0zM0 90h640v1H0zM0 180h640v1H0zM0 270h640v1H0z" stroke="#ffffff" stroke-opacity="0.04"/>
+    <path d="M0 0h1v360H0zM160 0h1v360h-1zM320 0h1v360h-1zM480 0h1v360h-1z" stroke="#ffffff" stroke-opacity="0.04"/>
+    <circle cx="320" cy="170" r="52" fill="url(#gold)" opacity="0.95"/>
+    <path d="M305 143v54l46-27z" fill="#0a0a0f"/>
+    <text x="320" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="6" fill="#d4a843">METAL BRIDGES</text>
+    <text x="320" y="284" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" letter-spacing="4" fill="#718096">VIDEO</text>
+</svg>
