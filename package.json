@@ -1,0 +1,21 @@
+{
+  "name": "metal-bridges",
+  "version": "1.0.0",
+  "description": "METAL BRIDGES — Precision Metal Fabrication & Modern Welding Solutions",
+  "scripts": {
+    "build": "node build.js && node build-projects.js && node build-video.js",
+    "build:index": "node build.js",
+    "build:projects": "node build-projects.js",
+    "build:video": "node build-video.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sekanijamaal/metal-bridges.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sekanijamaal/metal-bridges/issues"
+  },
+  "homepage": "https://github.com/sekanijamaal/metal-bridges#readme"
+}

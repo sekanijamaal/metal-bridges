@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const dismissPreloader = () => {
-        if (preloaderDismissed) return;
+        if (preloaderDismissed || !preloader) return;
         preloaderDismissed = true;
         anime({
             targets: preloader,
@@ -145,11 +145,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ─── 4. NAVBAR SCROLL ─── */
     const navbar = document.getElementById('navbar');
-    const handleNavScroll = () => {
-        navbar.classList.toggle('scrolled', window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleNavScroll);
-    handleNavScroll();
+    if (navbar) {
+        const handleNavScroll = () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        };
+        window.addEventListener('scroll', handleNavScroll);
+        handleNavScroll();
+    }
 
     /* ─── 5. MOBILE NAV MENU (Anime.js — no CSS transition conflict) ─── */
     const navToggle = document.getElementById('navToggle');
@@ -298,42 +300,58 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ─── 9. PROJECT FILTERS (Anime.js stagger) ─── */
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
+
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             const filter = btn.getAttribute('data-filter');
-            const visible = [];
-            const hidden = [];
+            const toReveal = [];
+            const toHide = [];
             projectCards.forEach(card => {
-                if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                    card.classList.remove('hidden');
-                    visible.push(card);
-                } else {
-                    hidden.push(card);
+                const matches = filter === 'all' || card.getAttribute('data-category') === filter;
+                if (matches) {
+                    if (card.classList.contains('hidden')) {
+                        card.classList.remove('hidden');
+                        toReveal.push(card);
+                    }
+                } else if (!card.classList.contains('hidden')) {
+                    toHide.push(card);
                 }
             });
-            if (hidden.length) {
+            if (toHide.length) {
+                anime.remove(toHide);
                 anime({
-                    targets: hidden,
-                    opacity: [1, 0],
-                    scale: [1, 0.95],
+                    targets: toHide,
+                    opacity: 0,
+                    scale: 0.95,
                     duration: 250,
                     easing: 'easeInQuad',
-                    complete: () => hidden.forEach(c => c.style.opacity = '0')
+                    complete: () => {
+                        toHide.forEach(c => {
+                            c.classList.add('hidden');
+                            c.removeAttribute('style');
+                        });
+                    }
                 });
             }
-            anime({
-                targets: visible,
-                opacity: [0, 1],
-                translateY: [30, 0],
-                scale: [0.97, 1],
-                duration: 450,
-                delay: anime.stagger(60),
-                easing: 'easeOutCubic'
-            });
+            if (toReveal.length) {
+                anime.remove(toReveal);
+                anime({
+                    targets: toReveal,
+                    opacity: [0, 1],
+                    translateY: [30, 0],
+                    scale: [0.97, 1],
+                    duration: 450,
+                    delay: anime.stagger(60),
+                    easing: 'easeOutCubic'
+                });
+            }
         });
     });
+
+    const defaultFilter = document.querySelector('.filter-btn[data-filter="all"]');
+    if (defaultFilter) defaultFilter.classList.add('active');
 
     /* ─── 10. TESTIMONIAL SLIDER (Anime.js) ─── */
     const testimonialTrack = document.getElementById('testimonialTrack');
@@ -378,12 +396,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    let testimonialInterval = setInterval(() => {
-        goToTestimonial((currentTestimonial + 1) % totalTestimonials);
-    }, 6000);
+    let testimonialInterval = null;
+    if (testimonialTrack) {
+        testimonialInterval = setInterval(() => {
+            goToTestimonial((currentTestimonial + 1) % totalTestimonials);
+        }, 6000);
+    }
 
     const testimonialSlider = document.querySelector('.testimonial-slider');
-    if (testimonialSlider) {
+    if (testimonialSlider && testimonialTrack) {
         testimonialSlider.addEventListener('mouseenter', () => clearInterval(testimonialInterval));
         testimonialSlider.addEventListener('mouseleave', () => {
             testimonialInterval = setInterval(() => {

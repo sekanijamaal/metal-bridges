@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,257 +19,234 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: 'var(--color-primary)', light: 'var(--color-primary-light)', dark: 'var(--color-primary-dark)' },
+                        dark: { DEFAULT: 'var(--color-dark)', alt: 'var(--color-dark-alt)', surface: 'var(--color-dark-surface)', card: 'var(--color-dark-card)' },
+                        steel: { DEFAULT: 'var(--color-steel)', light: 'var(--color-steel-light)' },
+                        text: { DEFAULT: 'var(--color-text)', muted: 'var(--color-text-muted)' },
+                        border: 'var(--color-border)',
+                        'border-light': 'var(--color-border-light)',
+                    },
+                    fontFamily: { heading: ['Orbitron', 'sans-serif'], body: ['Inter', 'sans-serif'] },
+                    maxWidth: { container: '1280px' },
+                    borderRadius: { sm: '6px', md: '12px', lg: '20px', xl: '30px' },
+                    boxShadow: { glow: '0 0 30px rgba(212, 168, 67, 0.15)' },
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-
-    <!-- Navigation -->
-    <header id="navbar" class="navbar scrolled">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <span class="logo-icon">&#9646;</span>
-                <div class="logo-text">
-                    <span class="logo-main">METAL BRIDGES</span>
-                    <span class="logo-sub">Precision Fabrication</span>
-                </div>
-            </a>
-            <nav class="nav-menu" id="navMenu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="index.html#about" class="nav-link">About Us</a>
-                <a href="index.html#services" class="nav-link">Services</a>
-                <a href="projects.html" class="nav-link active">Projects</a>
-                <a href="video-gallery.html" class="nav-link">Video Gallery</a>
-                <a href="index.html#testimonials" class="nav-link">Testimonials</a>
-                <a href="index.html#contact" class="nav-link">Contact</a>
-                <a href="index.html#quote" class="nav-btn-quote">Request a Quote</a>
-            </nav>
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-            </button>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-        </div>
-    </header>
-
-    <!-- Page Hero -->
-    <section class="hero" style="min-height: 50vh;">
-        <div class="hero-bg-overlay"></div>
-        <div class="hero-steel-pattern"></div>
-        <div class="hero-content" style="padding-top: 120px;">
-            <span class="section-tag">Our Portfolio</span>
-            <h1 class="hero-title" style="font-size: clamp(2rem, 5vw, 3.5rem); opacity: 1;">
-                Project <span class="hero-highlight">Gallery</span>
-            </h1>
-            <p class="hero-subtitle" style="opacity: 1;">Explore our completed projects showcasing the breadth and quality of our metal fabrication expertise across Ghana.</p>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="section" style="background: var(--color-dark);">
-        <div class="container">
-            <div class="project-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="gates">Gates</button>
-                <button class="filter-btn" data-filter="doors">Doors</button>
-                <button class="filter-btn" data-filter="staircases">Staircases</button>
-                <button class="filter-btn" data-filter="roofing">Roofing</button>
-                <button class="filter-btn" data-filter="railings">Railings</button>
-                <button class="filter-btn" data-filter="industrial">Industrial</button>
-                <button class="filter-btn" data-filter="custom">Custom</button>
+<body class="font-body bg-dark text-text antialiased overflow-x-hidden transition-[background-color,color] duration-[0.4s]">
+<header id="navbar" class="navbar scrolled fixed top-0 left-1/2 -translate-x-1/2 w-[calc(100%-48px)] max-w-[1256px] h-20 z-[1000] bg-[rgba(10,10,15,0.6)] rounded-b-[50px] border border-border border-t-0 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-300">
+    <div class="max-w-full mx-auto px-8 h-full flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3 no-underline">
+            <span class="text-[2rem] text-primary font-black leading-none">&#9646;</span>
+            <div class="flex flex-col">
+                <span class="font-heading text-lg font-extrabold text-white tracking-[2px] leading-tight">METAL BRIDGES</span>
+                <span class="text-[0.65rem] text-primary tracking-[2px] uppercase font-medium">Precision Fabrication</span>
             </div>
-            <div class="projects-grid">
-                <div class="project-card reveal" data-category="gates">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1621905251918-48018bf4b882?w=600&h=450&fit=crop&auto=format&q=80" alt="Modern Sliding Gate" loading="lazy">
-                    </div>
-                    <div class="project-overlay">
-                        <span class="project-category">Gates</span>
-                        <h3>Modern Sliding Gate</h3>
-                        <p>Elegant steel sliding gate with geometric patterns</p>
-                    </div>
+        </a>
+        <nav class="flex items-center gap-2 max-md:fixed max-md:top-0 max-md:-right-full max-md:w-[300px] max-md:h-screen max-md:bg-dark-alt max-md:flex-col max-md:p-[100px_30px_30px] max-md:gap-1 max-md:border-l max-md:border-border" id="navMenu">
+            <a href="index.html" class="nav-link px-4 py-2 text-[0.88rem] font-medium text-text-muted rounded-sm transition-all duration-300 hover:text-white relative">Home</a>
+            <a href="index.html#about" class="nav-link px-4 py-2 text-[0.88rem] font-medium text-text-muted rounded-sm transition-all duration-300 hover:text-white relative">About Us</a>
+            <a href="index.html#services" class="nav-link px-4 py-2 text-[0.88rem] font-medium text-text-muted rounded-sm transition-all duration-300 hover:text-white relative">Services</a>
+            <a href="projects.html" class="nav-link px-4 py-2 text-[0.88rem] font-medium text-text-muted rounded-sm transition-all duration-300 hover:text-white relative active">Projects</a>
+            <a href="video-gallery.html" class="nav-link px-4 py-2 text-[0.88rem] font-medium text-text-muted rounded-sm transition-all duration-300 hover:text-white relative">Video Gallery</a>
+            <a href="index.html#testimonials" class="nav-link px-4 py-2 text-[0.88rem] font-medium text-text-muted rounded-sm transition-all duration-300 hover:text-white relative">Testimonials</a>
+            <a href="index.html#contact" class="nav-link px-4 py-2 text-[0.88rem] font-medium text-text-muted rounded-sm transition-all duration-300 hover:text-white relative">Contact</a>
+            <a href="index.html#quote" class="px-6 py-2.5 text-[0.88rem] font-semibold text-dark bg-gradient-to-r from-primary to-primary-dark rounded-sm ml-2 max-md:ml-0 max-md:mt-3 max-md:text-center shadow-[0_2px_12px_rgba(212,168,67,0.3)] hover:from-primary-light hover:to-primary hover:-translate-y-0.5 transition-all duration-300">Request a Quote</a>
+        </nav>
+        <button class="flex items-center justify-center w-10 h-10 border border-border-light rounded-full bg-transparent cursor-pointer text-text-muted hover:text-primary hover:border-primary hover:bg-[rgba(212,168,67,0.08)] transition-all duration-300 shrink-0" id="themeToggle" aria-label="Toggle theme">
+            <svg class="icon-moon w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg class="icon-sun w-[18px] h-[18px] hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <button class="nav-toggle hidden max-md:flex flex-col gap-[5px] bg-none border-none cursor-pointer p-2" id="navToggle" aria-label="Toggle navigation">
+            <span class="hamburger-line w-7 h-[2px] bg-white rounded-[2px] transition-all duration-300"></span>
+            <span class="hamburger-line w-7 h-[2px] bg-white rounded-[2px] transition-all duration-300"></span>
+            <span class="hamburger-line w-7 h-[2px] bg-white rounded-[2px] transition-all duration-300"></span>
+        </button>
+    </div>
+</header>
+<section class="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-[url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1920&h=1080&fit=crop&auto=format&q=80')] bg-cover bg-center">
+    <div class="absolute inset-0 bg-gradient-to-br from-[rgba(10,10,15,0.88)] via-[rgba(26,26,46,0.82)] to-[rgba(13,17,23,0.9)] z-[1]"></div>
+    <div class="absolute inset-0 z-[1]" style="background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <div class="relative z-[2] text-center max-w-[900px] px-6 pt-[120px]">
+        <span class="inline-block font-heading text-[0.75rem] font-bold tracking-[3px] uppercase text-primary mb-4 px-4 py-1.5 border border-[rgba(212,168,67,0.3)] rounded-xl bg-[rgba(212,168,67,0.05)]">Our Portfolio</span>
+        <h1 class="font-heading text-[clamp(2rem,5vw,3.5rem)] font-black leading-[1.15] text-white">Project <span class="text-primary">Gallery</span></h1>
+        <p class="text-[1.15rem] text-text-muted max-w-[650px] mx-auto mt-6 leading-relaxed">Explore our completed projects showcasing the breadth and quality of our metal fabrication expertise across Ghana.</p>
+    </div>
+</section>
+<section class="py-24 relative bg-dark">
+    <div class="max-w-container mx-auto px-6">
+        <div class="flex justify-center gap-2 mb-10 flex-wrap">
+            <button class="filter-btn px-5 py-2 font-body text-[0.85rem] font-medium text-text-muted bg-transparent border border-border rounded-xl cursor-pointer transition-all duration-300 hover:text-primary hover:border-primary" data-filter="all">All</button>
+            <button class="filter-btn px-5 py-2 font-body text-[0.85rem] font-medium text-text-muted bg-transparent border border-border rounded-xl cursor-pointer transition-all duration-300 hover:text-primary hover:border-primary" data-filter="gates">Gates</button>
+            <button class="filter-btn px-5 py-2 font-body text-[0.85rem] font-medium text-text-muted bg-transparent border border-border rounded-xl cursor-pointer transition-all duration-300 hover:text-primary hover:border-primary" data-filter="doors">Doors</button>
+            <button class="filter-btn px-5 py-2 font-body text-[0.85rem] font-medium text-text-muted bg-transparent border border-border rounded-xl cursor-pointer transition-all duration-300 hover:text-primary hover:border-primary" data-filter="staircases">Staircases</button>
+            <button class="filter-btn px-5 py-2 font-body text-[0.85rem] font-medium text-text-muted bg-transparent border border-border rounded-xl cursor-pointer transition-all duration-300 hover:text-primary hover:border-primary" data-filter="roofing">Roofing</button>
+            <button class="filter-btn px-5 py-2 font-body text-[0.85rem] font-medium text-text-muted bg-transparent border border-border rounded-xl cursor-pointer transition-all duration-300 hover:text-primary hover:border-primary" data-filter="railings">Railings</button>
+            <button class="filter-btn px-5 py-2 font-body text-[0.85rem] font-medium text-text-muted bg-transparent border border-border rounded-xl cursor-pointer transition-all duration-300 hover:text-primary hover:border-primary" data-filter="industrial">Industrial</button>
+            <button class="filter-btn px-5 py-2 font-body text-[0.85rem] font-medium text-text-muted bg-transparent border border-border rounded-xl cursor-pointer transition-all duration-300 hover:text-primary hover:border-primary" data-filter="custom">Custom</button>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="gates">
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415688/df0c1b84-2f6a-4fa7-8d6f-058c23d6aed8_grzzqx.jpg" alt="Modern Sliding Gate" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
+                    <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Gates</span>
+                    <h3 class="font-heading text-base font-bold text-white mb-1">Modern Sliding Gate</h3>
+                    <p class="text-[0.8rem] text-text-muted">Elegant steel sliding gate with geometric patterns</p>
                 </div>
-                <div class="project-card reveal" data-category="gates">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=450&fit=crop&auto=format&q=80" alt="Ornamental Double Swing Gate" loading="lazy">
-                    </div>
-                    <div class="project-overlay">
-                        <span class="project-category">Gates</span>
-                        <h3>Ornamental Double Swing Gate</h3>
-                        <p>Classic double-swing gate with ornamental details</p>
-                    </div>
+            </div>
+            <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="gates">
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415689/ea2389ce-f1da-4f45-9771-2491786eff74_bq5hgb.jpg" alt="Ornamental Double Swing Gate" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
+                    <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Gates</span>
+                    <h3 class="font-heading text-base font-bold text-white mb-1">Ornamental Double Swing Gate</h3>
+                    <p class="text-[0.8rem] text-text-muted">Classic double-swing gate with ornamental details</p>
                 </div>
-                <div class="project-card reveal" data-category="gates">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=450&fit=crop&auto=format&q=80" alt="Automatic Rolling Gate" loading="lazy">
-                    </div>
-                    <div class="project-overlay">
-                        <span class="project-category">Gates</span>
-                        <h3>Automatic Rolling Gate</h3>
-                        <p>Motorized rolling gate for commercial property</p>
-                    </div>
+            </div>
+            <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="gates">
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415486/b5ca7167-0faf-4db1-a2ae-65f0a312defe_c5fvjx.jpg" alt="Automatic Rolling Gate" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
+                    <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Gates</span>
+                    <h3 class="font-heading text-base font-bold text-white mb-1">Automatic Rolling Gate</h3>
+                    <p class="text-[0.8rem] text-text-muted">Motorized rolling gate for commercial property</p>
                 </div>
-                <div class="project-card reveal" data-category="doors">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1567361808960-dec9cb578182?w=600&h=450&fit=crop&auto=format&q=80" alt="Heavy-Duty Security Door" loading="lazy">
-                    </div>
-                    <div class="project-overlay">
-                        <span class="project-category">Doors</span>
-                        <h3>Heavy-Duty Security Door</h3>
-                        <p>Reinforced steel security door with modern finish</p>
-                    </div>
+            </div>
+            <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="doors">
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415485/8c38782d-01cb-48e4-8391-96951b8b82ae_lwjwy1.jpg" alt="Heavy-Duty Security Door" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
+                    <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Doors</span>
+                    <h3 class="font-heading text-base font-bold text-white mb-1">Heavy-Duty Security Door</h3>
+                    <p class="text-[0.8rem] text-text-muted">Reinforced steel security door with modern finish</p>
                 </div>
-                <div class="project-card reveal" data-category="doors">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=450&fit=crop&auto=format&q=80" alt="Designer Front Door" loading="lazy">
-                    </div>
-                    <div class="project-overlay">
-                        <span class="project-category">Doors</span>
-                        <h3>Designer Front Door</h3>
-                        <p>Premium steel entrance door with decorative panels</p>
-                    </div>
+            </div>
+            <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="doors">
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415485/e36d926e-901c-4383-a26a-e2206125d05c_q2bree.jpg" alt="Designer Front Door" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
+                    <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Doors</span>
+                    <h3 class="font-heading text-base font-bold text-white mb-1">Designer Front Door</h3>
+                    <p class="text-[0.8rem] text-text-muted">Premium steel entrance door with decorative panels</p>
                 </div>
-                <div class="project-card reveal" data-category="staircases">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?w=600&h=450&fit=crop&auto=format&q=80" alt="Custom Spiral Staircase" loading="lazy">
-                    </div>
-                    <div class="project-overlay">
-                        <span class="project-category">Staircases</span>
-                        <h3>Custom Spiral Staircase</h3>
-                        <p>Space-saving spiral staircase with handrails</p>
-                    </div>
+            </div>
+            <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="staircases">
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415489/e8f93370-33b2-49b4-b760-e45e54606837_wijnxb.jpg" alt="Custom Spiral Staircase" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
+                    <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Staircases</span>
+                    <h3 class="font-heading text-base font-bold text-white mb-1">Custom Spiral Staircase</h3>
+                    <p class="text-[0.8rem] text-text-muted">Space-saving spiral staircase with handrails</p>
                 </div>
-                <div class="project-card reveal" data-category="staircases">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=450&fit=crop&auto=format&q=80" alt="Modern L-Shaped Staircase" loading="lazy">
-                    </div>
-                    <div class="project-overlay">
-                        <span class="project-category">Staircases</span>
-                        <h3>Modern L-Shaped Staircase</h3>
-                        <p>Contemporary steel staircase with glass railing</p>
-                    </div>
+            </div>
+            <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="staircases">
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415491/5BD65239-E7E4-42CC-B6FC-F565BFB43DAF_pon9kf.jpg" alt="Modern L-Shaped Staircase" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
+                    <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Staircases</span>
+                    <h3 class="font-heading text-base font-bold text-white mb-1">Modern L-Shaped Staircase</h3>
+                    <p class="text-[0.8rem] text-text-muted">Contemporary steel staircase with glass railing</p>
                 </div>
-                <div class="project-card reveal" data-category="roofing">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=450&fit=crop&auto=format&q=80" alt="Industrial Roofing Structure" loading="lazy">
-                    </div>
-                    <div class="project-overlay">
-                        <span class="project-category">Roofing</span>
-                        <h3>Industrial Roofing Structure</h3>
-                        <p>Large-span steel roofing for warehouse facility</p>
-                    </div>
+            </div>
+            <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="roofing">
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415426/d91381e9-3cd6-4968-8ca1-39f61d063f9c_bv5p4u.jpg" alt="Industrial Roofing Structure" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
+                    <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Roofing</span>
+                    <h3 class="font-heading text-base font-bold text-white mb-1">Industrial Roofing Structure</h3>
+                    <p class="text-[0.8rem] text-text-muted">Large-span steel roofing for warehouse facility</p>
                 </div>
-                <div class="project-card reveal" data-category="roofing">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1517505022284-af0d6c73d3bf?w=600&h=450&fit=crop&auto=format&q=80" alt="Residential Carport Roof" loading="lazy">
-                    </div>
-                    <div class="project-overlay">
-                        <span class="project-category">Roofing</span>
-                        <h3>Residential Carport Roof</h3>
-                        <p>Custom steel canopy for residential parking</p>
-                    </div>
+            </div>
+            <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="roofing">
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415488/4bceed22-161f-49df-9350-8a2d2baff10c_gv9rwy.jpg" alt="Residential Carport Roof" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
+                    <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Roofing</span>
+                    <h3 class="font-heading text-base font-bold text-white mb-1">Residential Carport Roof</h3>
+                    <p class="text-[0.8rem] text-text-muted">Custom steel canopy for residential parking</p>
                 </div>
-                <div class="project-card reveal" data-category="railings">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=450&fit=crop&auto=format&q=80" alt="Stainless Steel Balcony Railings" loading="lazy">
-                    </div>
-                    <div class="project-overlay">
-                        <span class="project-category">Railings</span>
-                        <h3>Stainless Steel Balcony Railings</h3>
-                        <p>Premium stainless steel balustrade system</p>
-                    </div>
+            </div>
+            <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="railings">
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415690/032fa17c-6f98-4dd8-b203-890a4d3562da_lnmcvr.jpg" alt="Stainless Steel Balcony Railings" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
+                    <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Railings</span>
+                    <h3 class="font-heading text-base font-bold text-white mb-1">Stainless Steel Balcony Railings</h3>
+                    <p class="text-[0.8rem] text-text-muted">Premium stainless steel balustrade system</p>
                 </div>
-                <div class="project-card reveal" data-category="railings">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&h=450&fit=crop&auto=format&q=80" alt="Decorative Handrails" loading="lazy">
-                    </div>
-                    <div class="project-overlay">
-                        <span class="project-category">Railings</span>
-                        <h3>Decorative Handrails</h3>
-                        <p>Custom-designed handrails with artistic patterns</p>
-                    </div>
+            </div>
+            <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="railings">
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415690/8ec561bc-b0a1-41ba-bf53-82f0f1d45b3b_j2yu7x.jpg" alt="Decorative Handrails" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
+                    <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Railings</span>
+                    <h3 class="font-heading text-base font-bold text-white mb-1">Decorative Handrails</h3>
+                    <p class="text-[0.8rem] text-text-muted">Custom-designed handrails with artistic patterns</p>
                 </div>
-                <div class="project-card reveal" data-category="industrial">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1535813547-9b5c4c3f3470?w=600&h=450&fit=crop&auto=format&q=80" alt="Commercial Steel Framework" loading="lazy">
-                    </div>
-                    <div class="project-overlay">
-                        <span class="project-category">Industrial</span>
-                        <h3>Commercial Steel Framework</h3>
-                        <p>Heavy-duty structural steel for commercial building</p>
-                    </div>
+            </div>
+            <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="industrial">
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415425/6cf81117-81d5-4a5a-9993-e9ff950bee7f_nqhdap.jpg" alt="Commercial Steel Framework" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
+                    <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Industrial</span>
+                    <h3 class="font-heading text-base font-bold text-white mb-1">Commercial Steel Framework</h3>
+                    <p class="text-[0.8rem] text-text-muted">Heavy-duty structural steel for commercial building</p>
                 </div>
-                <div class="project-card reveal" data-category="industrial">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1590650516494-0c8e4a4dd67e?w=600&h=450&fit=crop&auto=format&q=80" alt="Warehouse Storage Racks" loading="lazy">
-                    </div>
-                    <div class="project-overlay">
-                        <span class="project-category">Industrial</span>
-                        <h3>Warehouse Storage Racks</h3>
-                        <p>Heavy-duty industrial storage rack system</p>
-                    </div>
+            </div>
+            <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="industrial">
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415425/479684e4-da41-45b9-b0c5-f571ebcfb00d_lsli1z.jpg" alt="Warehouse Storage Racks" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
+                    <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Industrial</span>
+                    <h3 class="font-heading text-base font-bold text-white mb-1">Warehouse Storage Racks</h3>
+                    <p class="text-[0.8rem] text-text-muted">Heavy-duty industrial storage rack system</p>
                 </div>
-                <div class="project-card reveal" data-category="custom">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&h=450&fit=crop&auto=format&q=80" alt="Decorative Metal Partition" loading="lazy">
-                    </div>
-                    <div class="project-overlay">
-                        <span class="project-category">Custom</span>
-                        <h3>Decorative Metal Partition</h3>
-                        <p>Artistic room divider with intricate patterns</p>
-                    </div>
+            </div>
+            <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="custom">
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415423/ce4402e6-c6c0-4ea6-b9e0-ddc21e08634a_dl0hta.jpg" alt="Decorative Metal Partition" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
+                    <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Custom</span>
+                    <h3 class="font-heading text-base font-bold text-white mb-1">Decorative Metal Partition</h3>
+                    <p class="text-[0.8rem] text-text-muted">Artistic room divider with intricate patterns</p>
                 </div>
-                <div class="project-card reveal" data-category="custom">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&h=450&fit=crop&auto=format&q=80" alt="Metal Garden Art" loading="lazy">
-                    </div>
-                    <div class="project-overlay">
-                        <span class="project-category">Custom</span>
-                        <h3>Metal Garden Art</h3>
-                        <p>Custom decorative metal sculptures for garden</p>
-                    </div>
+            </div>
+            <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="custom">
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415430/E25D7FBA-F8DE-47A6-836C-40821530CBC3_oc7shh.jpg" alt="Metal Garden Art" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
+                    <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Custom</span>
+                    <h3 class="font-heading text-base font-bold text-white mb-1">Metal Garden Art</h3>
+                    <p class="text-[0.8rem] text-text-muted">Custom decorative metal sculptures for garden</p>
                 </div>
-                <div class="project-card reveal" data-category="custom">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1504297050568-910d24c426d3?w=600&h=450&fit=crop&auto=format&q=80" alt="Custom Metal Furniture" loading="lazy">
-                    </div>
-                    <div class="project-overlay">
-                        <span class="project-category">Custom</span>
-                        <h3>Custom Metal Furniture</h3>
-                        <p>Industrial-style metal furniture and fixtures</p>
-                    </div>
+            </div>
+            <div class="project-card relative rounded-md overflow-hidden cursor-pointer border border-border transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(212,168,67,0.3)] hover:shadow-glow" data-category="custom">
+                <div class="overflow-hidden aspect-[4/3]"><img src="https://res.cloudinary.com/dmvmc4f1/image/upload/v1785415485/4e1d731f-c372-40bb-9dbc-119b9a225b64_bqjhxa.jpg" alt="Custom Metal Furniture" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105"></div>
+                <div class="project-overlay absolute bottom-0 left-0 w-full p-[30px_20px_20px] opacity-0 translate-y-5 transition-all duration-300">
+                    <span class="font-heading text-[0.65rem] font-semibold tracking-[2px] uppercase text-primary block mb-1.5">Custom</span>
+                    <h3 class="font-heading text-base font-bold text-white mb-1">Custom Metal Furniture</h3>
+                    <p class="text-[0.8rem] text-text-muted">Industrial-style metal furniture and fixtures</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- CTA Section -->
-    <section class="section" style="background: var(--color-dark-surface); text-align: center;">
-        <div class="container">
-            <h2 class="section-title">Have a Project in Mind?</h2>
-            <p class="section-desc" style="max-width: 500px; margin: 0 auto 30px;">Let us bring your vision to life with our expertise in metal fabrication and welding.</p>
-            <a href="index.html#quote" class="btn btn-primary btn-lg">Request a Free Quote</a>
-        </div>
-    </section>
+<section class="py-24 relative bg-dark-surface text-center">
+    <div class="max-w-container mx-auto px-6">
+        <h2 class="font-heading text-[clamp(1.8rem,4vw,2.8rem)] font-extrabold leading-tight text-white mb-5">Have a Project in Mind?</h2>
+        <p class="text-[1.05rem] text-text-muted leading-relaxed max-w-[500px] mx-auto mb-8">Let us bring your vision to life with our expertise in metal fabrication and welding.</p>
+        <a href="index.html#quote" class="inline-flex items-center gap-2.5 px-10 py-[18px] font-body text-[1.05rem] font-semibold rounded-sm bg-gradient-to-r from-primary to-primary-dark text-dark shadow-[0_4px_20px_rgba(212,168,67,0.3)] hover:from-primary-light hover:to-primary hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(212,168,67,0.4)] transition-all duration-300 no-underline whitespace-nowrap">Request a Free Quote</a>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="footer-bottom-content">
-                    <p>&copy; 2026 METAL BRIDGES. All rights reserved.</p>
-                    <div class="footer-bottom-links">
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Service</a>
-                    </div>
-                </div>
+<footer class="bg-dark-alt border-t border-border">
+    <div class="py-5 border-t border-border">
+        <div class="max-w-container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-3">
+            <p class="text-[0.85rem] text-text-muted">&copy; 2026 METAL BRIDGES. All rights reserved.</p>
+            <div class="flex gap-5">
+                <a href="#" class="text-[0.85rem] text-text-muted hover:text-primary transition-all">Privacy Policy</a>
+                <a href="#" class="text-[0.85rem] text-text-muted hover:text-primary transition-all">Terms of Service</a>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
-    <script src="js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
