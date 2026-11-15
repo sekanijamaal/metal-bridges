@@ -4,7 +4,7 @@ const sections = [];
 
 // Head
 sections.push(`<!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" data-theme-preference="system">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,16 +18,7 @@ sections.push(`<!DOCTYPE html>
     <meta property="og:url" content="https://www.metalbridges.com">
     <meta name="twitter:card" content="summary_large_image">
     <title>METAL BRIDGES — Precision Metal Fabrication &amp; Modern Welding Solutions</title>
-    <script>
-        (function() {
-            var t = localStorage.getItem('theme');
-            if (t === 'light' || t === 'dark') {
-                document.documentElement.setAttribute('data-theme', t);
-            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-                document.documentElement.setAttribute('data-theme', 'light');
-            }
-        })();
-    </script>
+    <script src="js/theme.js"></script>
     <link rel="canonical" href="https://www.metalbridges.com">
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -111,9 +102,10 @@ sections.push(`
             <a href="#contact" class="nav-link px-4 py-2 text-[0.88rem] font-medium text-text-muted rounded-sm transition-all duration-300 hover:text-white relative">Contact</a>
             <a href="#quote" class="px-6 py-2.5 text-[0.88rem] font-semibold text-dark bg-gradient-to-r from-primary to-primary-dark rounded-sm ml-2 max-md:ml-0 max-md:mt-3 max-md:text-center shadow-[0_2px_12px_rgba(212,168,67,0.3)] hover:from-primary-light hover:to-primary hover:-translate-y-0.5 transition-all duration-300">Request a Quote</a>
         </nav>
-        <button class="flex items-center justify-center w-10 h-10 border border-border-light rounded-full bg-transparent cursor-pointer text-text-muted hover:text-primary hover:border-primary hover:bg-[rgba(212,168,67,0.08)] transition-all duration-300 shrink-0" id="themeToggle" aria-label="Toggle theme">
-            <svg class="icon-moon w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-            <svg class="icon-sun w-[18px] h-[18px] hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <button type="button" class="theme-control theme-icon-button" data-theme-toggle aria-label="Color theme: System. Activate to switch to Light." title="Switch to Light theme">
+            <svg data-theme-icon="light" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l-1.42 1.42m11.3-11.3 1.42-1.42"></path></svg>
+            <svg data-theme-icon="dark" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"></path></svg>
+            <svg data-theme-icon="system" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"></rect><path d="M8 21h8m-4-4v4"></path></svg>
         </button>
         <button class="nav-toggle hidden max-md:flex flex-col gap-[5px] bg-none border-none cursor-pointer p-2" id="navToggle" aria-label="Toggle navigation">
             <span class="hamburger-line w-7 h-[2px] bg-white rounded-[2px] transition-all duration-300"></span>
@@ -125,18 +117,17 @@ sections.push(`
 
 // Hero
 sections.push(`
-<section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1920&amp;h=1080&amp;fit=crop&amp;auto=format&amp;q=80')] bg-cover bg-center pb-[120px]">
+<section id="home" class="theme-hero relative min-h-screen flex items-center justify-center overflow-hidden bg-[url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1920&amp;h=1080&amp;fit=crop&amp;auto=format&amp;q=80')] bg-cover bg-center pb-[120px]">
     <div class="absolute inset-0 bg-gradient-to-br from-[rgba(10,10,15,0.88)] via-[rgba(26,26,46,0.82)] to-[rgba(13,17,23,0.9)] z-[1]"></div>
     <div class="absolute inset-0 z-[1]" style="background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 60px 60px;"></div>
     <div class="relative z-[2] text-center max-w-[900px] px-6 pt-[100px] max-md:pt-20">
-        <p class="hero-badge inline-block font-heading text-[0.7rem] font-semibold tracking-[3px] uppercase text-primary px-5 py-2 border border-[rgba(212,168,67,0.3)] rounded-xl bg-[rgba(212,168,67,0.05)] mb-8 opacity-0">Modern Metal Designer — Accra, Ghana</p>
-        <h1 class="hero-title font-heading text-[clamp(2.2rem,6vw,4rem)] font-black leading-[1.15] text-white mb-6">
+        <h1 class="hero-title font-heading text-[clamp(3rem,8vw,5rem)] font-black leading-[1.15] text-white mb-6">
             Building Strength in Steel,<br>
             <span class="text-primary relative">Crafting Excellence.</span>
         </h1>
         <p class="hero-subtitle text-[1.15rem] text-text-muted max-w-[650px] mx-auto mb-10 leading-relaxed opacity-0">Precision Metal Fabrication &amp; Modern Welding Solutions. From concept to completion, we deliver durable, innovative, and high-quality metal structures.</p>
         <div class="flex gap-4 justify-center flex-wrap max-sm:flex-col max-sm:items-center">
-            <a href="#quote" class="opacity-0 inline-flex items-center gap-2.5 px-8 py-3.5 font-body text-[0.95rem] font-semibold rounded-sm bg-gradient-to-r from-primary to-primary-dark text-dark shadow-[0_4px_20px_rgba(212,168,67,0.3)] hover:from-primary-light hover:to-primary hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(212,168,67,0.4)] transition-all duration-300 no-underline whitespace-nowrap">
+            <a href="#quote" class="opacity-0 inline-flex items-center gap-2.5 px-8 py-4 font-body text-[1rem] font-semibold rounded-sm bg-gradient-to-r from-primary to-primary-dark text-dark shadow-[0_4px_20px_rgba(212,168,67,0.3)] hover:from-primary-light hover:to-primary hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(212,168,67,0.4)] transition-all duration-300 no-underline whitespace-nowrap">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                 Request a Quote
             </a>
@@ -183,7 +174,7 @@ sections.push(`
     <div class="max-w-container mx-auto px-6">
         <div class="text-center max-w-[700px] mx-auto mb-14">
             <span class="inline-block font-heading text-[0.75rem] font-bold tracking-[3px] uppercase text-primary mb-4 px-4 py-1.5 border border-[rgba(212,168,67,0.3)] rounded-xl bg-[rgba(212,168,67,0.05)]">About Us</span>
-            <h2 class="font-heading text-[clamp(1.8rem,4vw,2.8rem)] font-extrabold leading-tight text-white mb-5">Precision, Innovation &amp;<br><span class="text-primary">Uncompromising Quality</span></h2>
+            <h2 class="font-heading text-[clamp(1.8rem,4vw,2.8rem)] font-extrabold leading-tight text-white mb-5">Precision Metal Fabrication &amp; Welding Solutions<br><span class="text-primary">Transforming Ghana's Skyline</span></h2>
             <p class="text-[1.05rem] text-text-muted leading-relaxed">METAL BRIDGES is a professional welding and metal fabrication company dedicated to producing durable metal structures across Ghana.</p>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-[60px] items-center mb-20">
@@ -201,10 +192,6 @@ sections.push(`
             <div class="relative">
                 <div class="rounded-md overflow-hidden border border-border">
                     <img src="https://images.unsplash.com/photo-1567361808960-dec9cb578182?w=800&amp;h=600&amp;fit=crop&amp;auto=format&amp;q=80" alt="METAL BRIDGES Workshop" loading="lazy" class="w-full h-full object-cover transition-transform duration-[0.6s] hover:scale-105">
-                </div>
-                <div class="absolute -bottom-5 -right-5 w-[120px] h-[120px] bg-gradient-to-br from-primary to-primary-dark rounded-md flex flex-col items-center justify-center shadow-lg">
-                    <span class="font-heading text-[2rem] font-black text-dark leading-none">12+</span>
-                    <span class="text-[0.7rem] font-semibold text-dark text-center leading-tight opacity-80">Years of<br>Excellence</span>
                 </div>
             </div>
         </div>
@@ -356,7 +343,7 @@ sections.push(`
             </div>
         </div>
         <div class="text-center mt-12">
-            <a href="projects.html" class="inline-flex items-center gap-2.5 px-8 py-3.5 font-body text-[0.95rem] font-semibold rounded-sm bg-gradient-to-r from-primary to-primary-dark text-dark shadow-[0_4px_20px_rgba(212,168,67,0.3)] hover:from-primary-light hover:to-primary hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(212,168,67,0.4)] transition-all duration-300 no-underline whitespace-nowrap">View All Projects</a>
+            <a href="projects.html" class="inline-flex items-center gap-2.5 px-8 py-4 font-body text-[1rem] font-semibold rounded-sm bg-gradient-to-r from-primary to-primary-dark text-dark shadow-[0_4px_20px_rgba(212,168,67,0.3)] hover:from-primary-light hover:to-primary hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(212,168,67,0.4)] transition-all duration-300 no-underline whitespace-nowrap">View All Projects</a>
         </div>
     </div>
 </section>`);

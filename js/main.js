@@ -3,6 +3,38 @@
    ============================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+        const runAnime = window.anime;
+        const reducedAnime = (options) => runAnime({
+            ...options,
+            duration: 0,
+            delay: 0,
+            endDelay: 0,
+            loop: false
+        });
+
+        reducedAnime.stagger = runAnime.stagger;
+        reducedAnime.remove = runAnime.remove;
+        reducedAnime.timeline = (options) => {
+            const timeline = runAnime.timeline(options);
+            const add = timeline.add;
+            timeline.add = (animation, offset) => {
+                add.call(timeline, {
+                    ...animation,
+                    duration: 0,
+                    delay: 0,
+                    endDelay: 0,
+                    loop: false
+                }, offset);
+                return timeline;
+            };
+            return timeline;
+        };
+        window.anime = reducedAnime;
+        document.querySelectorAll('.opacity-0').forEach(element => element.classList.remove('opacity-0'));
+    }
 
     /* ─── 1. PRELOADER ─── */
     const preloader = document.getElementById('preloader');
@@ -449,26 +481,42 @@ document.addEventListener('DOMContentLoaded', () => {
                 translateY: [0, -20],
                 duration: 300,
                 easing: 'easeInQuad',
-                complete: () => {
-                    quoteForm.innerHTML = `
-                        <div class="form-success">
-                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#48bb78" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
-                            <h3>Quote Request Submitted!</h3>
-                            <p>Thank you for your interest in METAL BRIDGES. We will review your project details and get back to you within 24 hours.</p>
-                        </div>`;
-                    anime({
-                        targets: '.form-success',
-                        opacity: [0, 1],
-                        scale: [0.9, 1],
-                        translateY: [20, 0],
-                        duration: 500,
-                        easing: 'easeOutBack'
-                    });
-                }
             });
+            // Show loading state on button
+            const submitBtn = quoteForm.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `
+                    <span class="loading-spinner inline-block w-4 h-4 rounded-full border-2 border-white border-t-transparent animate-spin mr-2"></span>
+                    Submitting...
+                `;
+            }
+            setTimeout(() => {
+                quoteForm.innerHTML = `
+                    <div class="form-success">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <h3>Quote Request Submitted!</h3>
+                        <p>Thank you for your interest in METAL BRIDGES. We will review your project details and get back to you within 24 hours.</p>
+                    </div>`;
+                anime({
+                    targets: '.form-success',
+                    opacity: [0, 1],
+                    scale: [0.9, 1],
+                    translateY: [20, 0],
+                    duration: 500,
+                    easing: 'easeOutBack'
+                });
+                // Re-enable button after animation
+                setTimeout(() => {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = 'Submit Quote Request';
+                    }
+                }, 500);
+            }, 300);
         });
     }
 
@@ -488,7 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const successDiv = document.createElement('div');
                     successDiv.className = 'form-success';
                     successDiv.innerHTML = `
-                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#48bb78" stroke-width="2">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2">
                             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                             <polyline points="22 4 12 14.01 9 11.01"></polyline>
                         </svg>
@@ -573,23 +621,6 @@ document.addEventListener('DOMContentLoaded', () => {
             lastScrollY = window.scrollY;
         }
     });
-
-    /* ─── 18. THEME TOGGLE ─── */
-    const themeToggle = document.getElementById('themeToggle');
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const html = document.documentElement;
-            const current = html.getAttribute('data-theme');
-            const next = current === 'light' ? 'dark' : 'light';
-            html.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-            anime({
-                targets: themeToggle.querySelector('svg'),
-                rotate: { value: 360, duration: 500 },
-                easing: 'easeOutQuad'
-            });
-        });
-    }
 
     /* ─── 19. VIDEO GALLERY LIGHTBOX ─── */
     const videoCards = document.querySelectorAll('.video-card[data-video]');
